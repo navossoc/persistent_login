@@ -245,7 +245,7 @@ class persistent_login extends rcube_plugin
 	function logout_after($args)
 	{
 		$rcmail = rcmail::get_instance();
-		if ($this->use_auth_tokens) {
+		if ($this->use_auth_tokens && self::is_persistent_cookie_available()) {
 			// get user-id and token from cookie.
 			$cookie_data = self::get_persistent_cookie();
 			$token_parts = explode('|', $cookie_data);
